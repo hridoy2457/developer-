@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=360, height=800, initial-scale=1.0">
+  <title>Hridoy Devolepment</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      background: #dff8f4;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      width: 340px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+
+    form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #e53935;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      padding: 12px;
+      background: #f44336;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    #downloadBtn {
+      margin: 20px 0;
+      background: #4caf50;
+      display: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      padding: 12px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .phone {
+      width: 360px;
+      height: 800px;
+      background: white;
+      border-radius: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+    }
+
+    .status-bar {
+      background-color: #e53935;
+      color: white;
+      padding: 4px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-family: Arial, sans-serif;
+    }
+
+    .status-bar .left {
+      font-weight: 500;
+    }
+
+    .status-bar .right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .net-speed {
+      font-size: 11px;
+      color: white;
+      margin-right: 2px;
+    }
+
+    .signal {
+      display: flex;
+      align-items: flex-end;
+      gap: 1px;
+    }
+
+    .signal .bar {
+      width: 2px;
+      background-color: white;
+      display: inline-block;
+    }
+
+    .bar1 { height: 4px; }
+    .bar2 { height: 6px; }
+    .bar3 { height: 8px; }
+    .bar4 { height: 10px; }
+
+    .wifi {
+      font-size: 16px;
+      color: white;
+      line-height: 1;
+    }
+
+    .battery {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .battery-body {
+      width: 16px;
+      height: 6px;
+      border: 1.2px solid white;
+      border-radius: 1px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .battery-level {
+      height: 100%;
+      background-color: #fff200;
+    }
+
+    .battery-cap {
+      width: 1.2px;
+      height: 4px;
+      background-color: white;
+      margin-left: -2px;
+    }
+
+    .battery-percent {
+      font-size: 12px;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .checkmark {
+      width: 80px;
+      height: 80px;
+      margin: 20px 0;
+    }
+
+    .success {
+      color: #e53935;
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .info-table {
+      width: 100%;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .info-table td {
+      padding: 4px 0;
+    }
+
+    .label {
+      color: #f57c00;
+    }
+
+    .value {
+      color: #333;
+      text-align: right;
+    }
+
+    .actions {
+      margin-top: 25px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .action-btn {
+      background: transparent;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      color: #f44336;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn {
+      background: #f44336;
+      color: white;
+      border: none;
+      padding: 14px 40px;
+      border-radius: 30px;
+      margin-top: 25px;
+      font-size: 18px;
+    }
+
+    .nav-bar {
+      background: black;
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .nav-bar span {
+      font-size: 20px;
+      color: white;
+    }
+
+    #showAgent {
+      font-size: 16px;
+      font-weight: bold;
+      color: #4e342e;
+      margin-bottom: 5px;
+    }
+
+    #showPhone {
+      font-size: 16px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="cashoutForm">
+    <h2>ক্যাশ আউট তথ্য</h2>
+    <input type="text" id="agent" placeholder="এজেন্ট নাম" required>
+    <input type="text" id="phone" placeholder="নাম্বার" required>
+    <input type="text" id="trxid" placeholder="ট্রানজেকশন আইডি" required>
+    <input type="number" id="amount" placeholder="পরিমাণ (টাকা)" required>
+    <button type="submit">Submit Now</button>
+  </form>
+
+  <div class="phone" id="phoneCard">
+    <div class="status-bar">
+      <div class="left" id="timeDisplay">--:--</div>
+      <div class="right">
+        <div class="net-speed">376.4 KB/s</div>
+        <div class="signal">
+          <span class="bar bar1"></span>
+          <span class="bar bar2"></span>
+          <span class="bar bar3"></span>
+          <span class="bar bar4"></span>
+        </div>
+        <div class="wifi">ᯤ</div>
+        <div class="battery-percent">70%</div>
+        <div class="battery">
+          <div class="battery-body">
+            <div class="battery-level" style="width: 70%;"></div>
+          </div>
+          <div class="battery-cap"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="checkmark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#f57c00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </div>
+      <div class="success">ক্যাশ আউট সফল</div>
+      <div id="showAgent"></div>
+      <div id="showPhone"></div>
+      <table class="info-table">
+        <tr><td class="label">ট্রানজেকশন আইডি</td><td class="value" id="showTrx"></td></tr>
+        <tr><td class="label">পরিমাণ</td><td class="value" id="showAmount"></td></tr>
+        <tr><td class="label">ফ্রি</td><td class="value" id="showFee"></td></tr>
+        <tr><td class="label">ভ্যাট</td><td class="value" id="showVat"></td></tr>
+        <tr><td class="label">সর্বমোট খরচ</td><td class="value" id="showCost"></td></tr>
+        <tr><td class="label">সর্বমোট</td><td class="value" id="showTotal"></td></tr>
+        <tr><td class="label">সময়</td><td class="value" id="showTime"></td></tr>
+      </table>
+
+      <div class="actions">
+        <button class="action-btn"><i class="fas fa-phone"></i> কল</button>
+        <button class="action-btn"><i class="fas fa-comment-dots"></i> মেসেজ</button>
+      </div>
+
+      <button class="btn">হোমে ফিরে যান</button>
+    </div>
+
+    <div class="nav-bar">
+      <span>▭</span>
+      <span>○</span>
+      <span>◁</span>
+    </div>
+  </div>
+
+  <button id="downloadBtn">ফটো ডাউনলোড করুন</button>
+
+  <script>
+    function getCurrentTime() {
+      const now = new Date();
+      const options = { day: '2-digit', month: 'short', year: 'numeric' };
+      const datePart = now.toLocaleDateString('en-GB', options).replace(/ /g, ' ');
+      let hours = now.getHours();
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12 || 12;
+      return {
+        full: `${datePart}, ${hours}:${minutes} ${ampm}`,
+        timeOnly: `${hours}:${minutes} ${ampm}`
+      };
+    }
+
+    const form = document.getElementById('cashoutForm');
+    const phoneCard = document.getElementById('phoneCard');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const agent = document.getElementById('agent').value;
+      const phone = document.getElementById('phone').value;
+      const trxid = document.getElementById('trxid').value;
+      const amount = parseFloat(document.getElementById('amount').value);
+
+      const feePerThousand = 10.86;
+      const vatPerThousand = 2.56;
+      const fee = (amount / 1000) * feePerThousand;
+      const vat = (amount / 1000) * vatPerThousand;
+
+      const cost = fee + vat;
+      const total = amount + cost;
+      const timeObj = getCurrentTime();
+
+      document.getElementById('showAgent').innerText = agent;
+      document.getElementById('showPhone').innerText = phone;
+      document.getElementById('showTrx').innerText = trxid;
+      document.getElementById('showAmount').innerText = amount.toFixed(2) + " টাকা";
+      document.getElementById('showFee').innerText = fee.toFixed(2) + " টাকা";
+      document.getElementById('showVat').innerText = vat.toFixed(2) + " টাকা";
+      document.getElementById('showCost').innerText = cost.toFixed(2) + " টাকা";
+      document.getElementById('showTotal').innerText = total.toFixed(2) + " টাকা";
+      document.getElementById('showTime').innerText = timeObj.full;
+      document.getElementById('timeDisplay').innerText = timeObj.timeOnly;
+
+      phoneCard.style.display = 'flex';
+      downloadBtn.style.display = 'inline-block';
+    });
+
+    downloadBtn.addEventListener('click', function () {
+      html2canvas(document.getElementById('phoneCard')).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'nagad-cashout.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    });
+  </script>
+
+</body>
+  </html>
