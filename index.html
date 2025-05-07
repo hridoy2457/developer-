@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=360, height=800, initial-scale=1.0">
+  <title>Hridoy Devolepment</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <form id="cashoutForm">
+    <h2>ক্যাশ আউট তথ্য</h2>
+    <input type="text" id="agent" placeholder="এজেন্ট নাম" required>
+    <input type="text" id="phone" placeholder="নাম্বার" required>
+    <input type="text" id="trxid" placeholder="ট্রানজেকশন আইডি" required>
+    <input type="number" id="amount" placeholder="পরিমাণ (টাকা)" required>
+    <button type="submit">Submit Now</button>
+  </form>
+
+  <div class="phone" id="phoneCard">
+    <div class="status-bar">
+      <div class="left" id="timeDisplay">--:--</div>
+      <div class="right">
+        <div class="net-speed">376.4 KB/s</div>
+        <div class="signal">
+          <span class="bar bar1"></span>
+          <span class="bar bar2"></span>
+          <span class="bar bar3"></span>
+          <span class="bar bar4"></span>
+        </div>
+        <div class="wifi">ᯤ</div>
+        <div class="battery-percent">70%</div>
+        <div class="battery">
+          <div class="battery-body">
+            <div class="battery-level" style="width: 70%;"></div>
+          </div>
+          <div class="battery-cap"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="checkmark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#f57c00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </div>
+      <div class="success">ক্যাশ আউট সফল</div>
+      <div id="showAgent"></div>
+      <div id="showPhone"></div>
+      <table class="info-table">
+        <tr><td class="label">ট্রানজেকশন আইডি</td><td class="value" id="showTrx"></td></tr>
+        <tr><td class="label">পরিমাণ</td><td class="value" id="showAmount"></td></tr>
+        <tr><td class="label">ফ্রি</td><td class="value" id="showFee"></td></tr>
+        <tr><td class="label">ভ্যাট</td><td class="value" id="showVat"></td></tr>
+        <tr><td class="label">সর্বমোট খরচ</td><td class="value" id="showCost"></td></tr>
+        <tr><td class="label">সর্বমোট</td><td class="value" id="showTotal"></td></tr>
+        <tr><td class="label">সময়</td><td class="value" id="showTime"></td></tr>
+      </table>
+      <div class="actions">
+        <button class="action-btn"><i class="fas fa-phone"></i> কল</button>
+        <button class="action-btn"><i class="fas fa-comment-dots"></i> মেসেজ</button>
+      </div>
+      <button class="btn">হোমে ফিরে যান</button>
+    </div>
+
+    <div class="nav-bar">
+      <span>▭</span>
+      <span>○</span>
+      <span>◁</span>
+    </div>
+  </div>
+
+  <button id="downloadBtn">ফটো ডাউনলোড করুন</button>
+  <script src="script.js"></script>
+</body>
+</html>
